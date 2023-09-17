@@ -12,3 +12,4 @@ class WorkToFile(ABC):
     @staticmethod
     def write():
         pass
+
