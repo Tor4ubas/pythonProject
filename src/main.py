@@ -26,3 +26,19 @@ def repeat_get(player: WorkToUser):
                 raise ValueError
         except ValueError:
             print("Ай-яй-яй, внимательней кнопочки нажимать надо!")
+
+def find_get(player: WorkToUser):
+    """Ищет дополнительный запрос пользователя"""
+
+    while True:
+        try:
+            choice_user = int(input('\nХочешь найти ключевое слово в вакансиях?\n1 - Да\n2 - Нет\n'))
+            if choice_user == 1:
+                data = input('Итак, твой запрос: ')
+                print(player.find_word(data))
+            elif choice_user == 2:
+                break
+            else:
+                raise ValueError
+        except ValueError:
+            print("Что-то не то нажато))")
