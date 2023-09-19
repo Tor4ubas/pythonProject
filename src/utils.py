@@ -71,3 +71,18 @@ class WorkToUser:
                 ReadWriteToJSON.write_json(total)
             else:
                 ReadWriteToJSON.add_json(total)
+
+
+    @staticmethod
+    def sort_all():
+        """Сортирует полученные вакансии"""
+
+        all_vacancies = ReadWriteToJSON.read_json()
+        total_vacancies = []
+        for i in all_vacancies:
+            total_vacancies.append(VacanciesSort(i['url'], i['title'], i['salary_int'], i['salary'], i['requirements'], i['date']))
+        total_vacancies.sort()
+        info = []
+        for i in total_vacancies:
+            info.append(i.__dict__)
+        ReadWriteToJSON.write_json(info)
