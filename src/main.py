@@ -42,3 +42,31 @@ def find_get(player: WorkToUser):
                 raise ValueError
         except ValueError:
             print("Что-то не то нажато))")
+
+def main():
+
+    while input('Нажми Enter, чтобы начать: ') != '':
+        continue
+
+    # Очищаем файл
+    f = open('vacancies.json', 'w')
+    f.close()
+
+    print('\nПривет! Я робот Вертер и я найду тебе кучу вакансий.')
+
+    player = WorkToUser()
+
+    get_user(player, 0)
+    repeat_get(player)
+    WorkToUser.sort_all()
+    find_get(player)
+
+    if not ReadWriteToJSON.read_json():
+        print('\nПардон,но по запросу ничего не найдено')
+    else:
+        print('\nСписок вакансий, отсортированных по зарплате, ты можешь посмотреть в файле - vacancies.json')
+    print('\nХорошего дня!')
+
+
+if __name__ == "__main__":
+    main()
