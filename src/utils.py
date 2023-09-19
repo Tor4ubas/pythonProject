@@ -86,3 +86,26 @@ class WorkToUser:
         for i in total_vacancies:
             info.append(i.__dict__)
         ReadWriteToJSON.write_json(info)
+
+    def find_word(self, find_words: str):
+        """Выполняет поиск по ключевым словам пользователя"""
+
+        info = ReadWriteToJSON.read_json()
+        total = []
+        for i in info:
+            try:
+                for iii in i.values():
+                    try:
+                        if find_words in iii:
+                            if i['url'][:14] == 'https://hh.ru/':
+                                total.append(i['url'])
+                            else:
+                                total.append(i['url'])
+                    except TypeError:
+                        continue
+            except AttributeError:
+                continue
+        if total == []:
+            return f'Ваш запрос: {find_words} не найден!'
+        else:
+            return f'Ваш запрос: {find_words} встречается в следующих вакансиях\n{total}'
