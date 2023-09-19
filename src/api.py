@@ -1,3 +1,6 @@
+from abc import ABC, abstractmethod
+import requests as requests
+
 class WorkApi(ABC):
     """Абстрактный класс для работы с API"""
 
