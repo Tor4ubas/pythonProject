@@ -66,3 +66,22 @@ class VacanciesSJ(Vacancies):
         :return: str
         """
         return f"Дата создания вакансии: {datetime.datetime.fromtimestamp(data).strftime('%d %B %Y %H:%M:%S')}"
+
+class VacanciesSort:
+    """Класс для работы с вакансиями в JSON-файле"""
+
+    def __init__(self, url: str, title: str, salary_int: int, salary: str, requirements: str, date: str):
+        self.url = url
+        self.title = title
+        self.salary_int = salary_int
+        self.salary = salary
+        self.requirements = requirements
+        self.date = date
+
+    def __lt__(self, other):
+        """
+        Сравнение вакансий по зарплате
+        :param other: экземпляр класса
+        :return: bool
+        """
+        return self.salary_int < other.salary_int
