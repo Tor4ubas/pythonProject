@@ -55,22 +55,22 @@ class WorkToUser:
                 except ValueError:
                     print("Попробуй еще раз")
 
-        def work_api(self, number: int):
-            """Выполняет работу API по запросу пользователя"""
+    def work_api(self, number: int):
+        """Выполняет работу API по запросу пользователя"""
 
-            total = []
-            if self.site == 'hh.ru':
-                info = HeadHunter(self.request, self.quantity).get_info()
-                for item in info:
-                    total.append(VacanciesHH(item).__dict__)
-            else:
-                info = SuperJob(self.request).get_info()
-                for item in info:
-                    total.append(VacanciesSJ(item).__dict__)
-            if number == 0:
-                ReadWriteToJSON.write_json(total)
-            else:
-                ReadWriteToJSON.add_json(total)
+        total = []
+        if self.site == 'hh.ru':
+            info = HeadHunter(self.request, self.quantity).get_info()
+            for item in info:
+                total.append(VacanciesHH(item).__dict__)
+        else:
+            info = SuperJob(self.request).get_info()
+            for item in info:
+                total.append(VacanciesSJ(item).__dict__)
+        if number == 0:
+            ReadWriteToJSON.write_json(total)
+        else:
+            ReadWriteToJSON.add_json(total)
 
 
     @staticmethod
@@ -109,3 +109,4 @@ class WorkToUser:
             return f'Ваш запрос: {find_words} не найден!'
         else:
             return f'Ваш запрос: {find_words} встречается в следующих вакансиях\n{total}'
+

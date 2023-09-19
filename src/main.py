@@ -1,6 +1,7 @@
 from utils import WorkToUser
 from work_file import ReadWriteToJSON
 
+
 def get_user(player: WorkToUser, count: int):
     """Выполняет запрос пользователя"""
 
@@ -11,6 +12,7 @@ def get_user(player: WorkToUser, count: int):
     print(f'\n{player}')  # Показывает запрос
 
     player.work_api(count)
+
 
 def repeat_get(player: WorkToUser):
     """Повторяет запрос пользователя"""
@@ -26,6 +28,7 @@ def repeat_get(player: WorkToUser):
                 raise ValueError
         except ValueError:
             print("Ай-яй-яй, внимательней кнопочки нажимать надо!")
+
 
 def find_get(player: WorkToUser):
     """Ищет дополнительный запрос пользователя"""
@@ -43,8 +46,8 @@ def find_get(player: WorkToUser):
         except ValueError:
             print("Что-то не то нажато))")
 
-def main():
 
+def main():
     while input('Нажми Enter, чтобы начать: ') != '':
         continue
 
