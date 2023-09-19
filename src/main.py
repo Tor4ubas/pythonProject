@@ -11,3 +11,18 @@ def get_user(player: WorkToUser, count: int):
     print(f'\n{player}')  # Показывает запрос
 
     player.work_api(count)
+
+def repeat_get(player: WorkToUser):
+    """Повторяет запрос пользователя"""
+
+    while True:
+        try:
+            choice_user = int(input('\nХочешь повторить запрос?\n1 - Да\n2 - Нет\n'))
+            if choice_user == 1:
+                get_user(player, 1)
+            elif choice_user == 2:
+                break
+            else:
+                raise ValueError
+        except ValueError:
+            print("Ай-яй-яй, внимательней кнопочки нажимать надо!")
