@@ -1,3 +1,7 @@
+from api import HeadHunter, SuperJob
+from work_file import ReadWriteToJSON
+from vacancies import VacanciesHH, VacanciesSJ, VacanciesSort
+
 class WorkToUser:
     """Взаимодействие с пользователем"""
 
@@ -50,3 +54,20 @@ class WorkToUser:
                         raise ValueError
                 except ValueError:
                     print("Попробуй еще раз")
+
+        def work_api(self, number: int):
+            """Выполняет работу API по запросу пользователя"""
+
+            total = []
+            if self.site == 'hh.ru':
+                info = HeadHunter(self.request, self.quantity).get_info()
+                for item in info:
+                    total.append(VacanciesHH(item).__dict__)
+            else:
+                info = SuperJob(self.request).get_info()
+                for item in info:
+                    total.append(VacanciesSJ(item).__dict__)
+            if number == 0:
+                ReadWriteToJSON.write_json(total)
+            else:
+                ReadWriteToJSON.add_json(total)
