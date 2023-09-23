@@ -1,4 +1,4 @@
-<h1 align="center">Holaaa! <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="50"></h1>
+<h1 align="center">Привет!</h1>
 
 <h2 align="center">Я, Данилов Александр</h2>
 <h2 align="center">студент онлайн школы SkyPro ⚡</h2>
